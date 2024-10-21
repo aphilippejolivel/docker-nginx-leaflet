@@ -1,0 +1,14 @@
+version: '3'
+services:
+  leaflet-sqlite:
+    build: ./leaflet-sqlite
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+    restart: unless-stopped
+  nginx-leaflet:
+    build: ./nginx-leaflet/
+    ports:
+      - "8080:80"
+    restart: unless-stopped

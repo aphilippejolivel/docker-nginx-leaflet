@@ -21,8 +21,10 @@ cat <<HERE >/usr/share/nginx/html/index.html
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css" />
-  <style>
+ <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+ <style>
     body {
       padding: 0px;
       margin: 0px;
@@ -36,21 +38,18 @@ cat <<HERE >/usr/share/nginx/html/index.html
   </style>
 </head>
 <body>
-  <div id="map"></div>
 
-  <script src="//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>
+<!-- Search bar -->
+<input type="text" id="city-search" placeholder="Search for a city..." style="width: 300px; padding: 5px;">
+<button id="search-btn">Search</button>
+<button id="marker-btn">Add Marker</button>
+  <div id="map"></div>
+ <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/zepto/1.1.4/zepto.min.js"></script>
   <script src="autosize.js"></script>
-  <script>
-    Autosize.enable();
-    var map = L.map('map').setView([51.05, -114.05], 10);
-
-    L.tileLayer('${TILESERVER}', {
-      attribution: '${ATTRIBUTION}'
-    })
-      .addTo(map);
-
-  </script>
+  <script src="./dng_map.js"></script>
 </body>
 </html>
 HERE
